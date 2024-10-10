@@ -8,7 +8,7 @@
     <style>
         body {
             font-family: 'Cairo', sans-serif;
-            background: linear-gradient(to bottom, #2e7d32, #a5d6a7);
+            background: linear-gradient(135deg, #4E342E, #8D6E63);
             color: #fff;
             text-align: center;
             display: flex;
@@ -103,17 +103,17 @@
             border-radius: 2px;
         }
 
-        /* Positioning balloons around the page */
-        .balloon:nth-child(1) { left: 5%; animation-duration: 7s; }
-        .balloon:nth-child(2) { left: 15%; animation-duration: 8s; background: radial-gradient(circle at 30% 30%, #00b0ff, #00e5ff); }
-        .balloon:nth-child(3) { left: 25%; animation-duration: 6.5s; background: radial-gradient(circle at 30% 30%, #76ff03, #c6ff00); }
-        .balloon:nth-child(4) { left: 35%; animation-duration: 7.5s; background: radial-gradient(circle at 30% 30%, #ff3d00, #ff9e00); }
-        .balloon:nth-child(5) { left: 45%; animation-duration: 8.5s; background: radial-gradient(circle at 30% 30%, #ff4081, #ff80ab); }
-        .balloon:nth-child(6) { left: 55%; animation-duration: 9s; background: radial-gradient(circle at 30% 30%, #ffc107, #ffeb3b); }
-        .balloon:nth-child(7) { left: 65%; animation-duration: 6s; background: radial-gradient(circle at 30% 30%, #e91e63, #f48fb1); }
-        .balloon:nth-child(8) { left: 75%; animation-duration: 7s; background: radial-gradient(circle at 30% 30%, #4caf50, #a5d6a7); }
-        .balloon:nth-child(9) { left: 85%; animation-duration: 8s; background: radial-gradient(circle at 30% 30%, #3f51b5, #7986cb); }
-        .balloon:nth-child(10) { left: 95%; animation-duration: 9s; background: radial-gradient(circle at 30% 30%, #ff5722, #ff8a65); }
+        /* Random positions for balloons */
+        .balloon:nth-child(1) { left: 5%; animation-duration: 7s; top: 20%; }
+        .balloon:nth-child(2) { left: 15%; animation-duration: 8s; top: 40%; background: radial-gradient(circle at 30% 30%, #00b0ff, #00e5ff); }
+        .balloon:nth-child(3) { left: 25%; animation-duration: 6.5s; top: 10%; background: radial-gradient(circle at 30% 30%, #76ff03, #c6ff00); }
+        .balloon:nth-child(4) { left: 35%; animation-duration: 7.5s; top: 30%; background: radial-gradient(circle at 30% 30%, #ff3d00, #ff9e00); }
+        .balloon:nth-child(5) { left: 45%; animation-duration: 8.5s; top: 50%; background: radial-gradient(circle at 30% 30%, #ff4081, #ff80ab); }
+        .balloon:nth-child(6) { left: 55%; animation-duration: 9s; top: 20%; background: radial-gradient(circle at 30% 30%, #ffc107, #ffeb3b); }
+        .balloon:nth-child(7) { left: 65%; animation-duration: 6s; top: 70%; background: radial-gradient(circle at 30% 30%, #e91e63, #f48fb1); }
+        .balloon:nth-child(8) { left: 75%; animation-duration: 7s; top: 15%; background: radial-gradient(circle at 30% 30%, #4caf50, #a5d6a7); }
+        .balloon:nth-child(9) { left: 85%; animation-duration: 8s; top: 65%; background: radial-gradient(circle at 30% 30%, #3f51b5, #7986cb); }
+        .balloon:nth-child(10) { left: 95%; animation-duration: 9s; top: 35%; background: radial-gradient(circle at 30% 30%, #ff5722, #ff8a65); }
 
         @keyframes float {
             0% { transform: translateY(0); }
@@ -123,7 +123,7 @@
     </style>
 </head>
 <body>
-    <h1>باقي من الزمن لتخرج دفعة هندسة التعدين</h1>
+    <h1>باقي من الزمن لتخرج دفعة هندسة التعدين والبترول</h1>
     <div id="countdown"></div>
     <footer>اعداد ENG Mostafa Thabet</footer>
 
