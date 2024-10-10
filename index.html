@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar">
 <head>
@@ -9,7 +8,7 @@
     <style>
         body {
             font-family: 'Cairo', sans-serif;
-            background: linear-gradient(135deg, #4CAF50, #81C784);
+            background: linear-gradient(135deg, #4E342E, #8D6E63);
             color: #fff;
             text-align: center;
             display: flex;
@@ -79,11 +78,28 @@
             }
         }
 
+        /* Balloon Drawing with CSS */
         .balloon {
             position: absolute;
             bottom: -100px;
-            width: 70px;
+            width: 60px;
+            height: 80px;
+            background: radial-gradient(circle at 30% 30%, #ff3d00, #ff9e00);
+            border-radius: 30px 30px 0 0;
             animation: float 6s ease-in-out infinite;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .balloon::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 20px;
+            background: #9E9E9E;
+            border-radius: 2px;
         }
 
         .balloon:nth-child(1) {
@@ -94,26 +110,25 @@
         .balloon:nth-child(2) {
             left: 25%;
             animation-duration: 8s;
+            background: radial-gradient(circle at 30% 30%, #00b0ff, #00e5ff);
         }
 
         .balloon:nth-child(3) {
             left: 40%;
             animation-duration: 6.5s;
+            background: radial-gradient(circle at 30% 30%, #76ff03, #c6ff00);
         }
 
         .balloon:nth-child(4) {
             left: 55%;
             animation-duration: 7.5s;
+            background: radial-gradient(circle at 30% 30%, #ff3d00, #ff9e00);
         }
 
         .balloon:nth-child(5) {
             left: 70%;
             animation-duration: 8.5s;
-        }
-
-        .balloon:nth-child(6) {
-            left: 85%;
-            animation-duration: 9s;
+            background: radial-gradient(circle at 30% 30%, #ff4081, #ff80ab);
         }
 
         @keyframes float {
@@ -121,115 +136,48 @@
                 transform: translateY(0);
             }
             50% {
-                transform: translateY(-100px);
+                transform: translateY(-30px);
             }
             100% {
                 transform: translateY(0);
-            }
-        }
-
-        .grad-cap {
-            width: 100px;
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            animation: spin 4s infinite linear;
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        /* Mining Engineer Animation */
-        .engineer {
-            position: absolute;
-            bottom: 0;
-            left: 10px;
-            width: 150px;
-            animation: mine 4s infinite ease-in-out;
-        }
-
-        @keyframes mine {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 1.8em;
-            }
-            #countdown {
-                font-size: 1.5em;
-            }
-            footer {
-                font-size: 1em;
-            }
-            .grad-cap {
-                width: 80px;
             }
         }
     </style>
 </head>
 <body>
-    <h1>باقي من الزمن لتخرج دفعة هندسة التعدين شعبة المناجم والفلزات بجامعة الأزهر</h1>
+    <h1>باقي من الزمن لتخرج دفعة هندسة التعدين</h1>
     <div id="countdown"></div>
-    <footer>
-        إعداد: ENG Mostafa Thabet
-    </footer>
+    <footer>اعداد ENG Mostafa Thabet</footer>
 
-    <!-- Adding Balloons -->
-    <img src="https://www.pngall.com/wp-content/uploads/5/Balloon-PNG.png" class="balloon" alt="Balloon">
-    <img src="https://www.pngall.com/wp-content/uploads/5/Balloon-PNG.png" class="balloon" alt="Balloon">
-    <img src="https://www.pngall.com/wp-content/uploads/5/Balloon-PNG.png" class="balloon" alt="Balloon">
-    <img src="https://www.pngall.com/wp-content/uploads/5/Balloon-PNG.png" class="balloon" alt="Balloon">
-    <img src="https://www.pngall.com/wp-content/uploads/5/Balloon-PNG.png" class="balloon" alt="Balloon">
-    <img src="https://www.pngall.com/wp-content/uploads/5/Balloon-PNG.png" class="balloon" alt="Balloon">
-
-    <!-- Adding Graduation Cap -->
-    <img src="https://www.pngall.com/wp-content/uploads/5/Graduation-Hat-PNG-Clipart.png" class="grad-cap" alt="Graduation Cap">
-
-    <!-- Adding Mining Engineer Animation -->
-    <img src="https://www.pngall.com/wp-content/uploads/4/Mining-Worker-PNG-Image.png" class="engineer" alt="Mining Engineer">
+    <!-- Balloons -->
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
 
     <script>
-        // Set the date we're counting down to
-        var countDownDate = new Date("Jun 20, 2025 00:00:00").getTime();
+        const targetDate = new Date('2025-06-20T00:00:00').getTime();
+        const countdown = document.getElementById('countdown');
 
-        // Update the count down every 1 second
-        var x = setInterval(function() {
+        const updateCountdown = () => {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
 
-            // Get today's date and time
-            var now = new Date().getTime();
-            
-            // Find the distance between now and the count down date
-            var distance = countDownDate - now;
-            
-            // Time calculations for days, hours, minutes and seconds
-            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            
-            // Display the result in the element with id="countdown"
-            document.getElementById("countdown").innerHTML = days + " يوم " + hours + " ساعة "
-            + minutes + " دقيقة " + seconds + " ثانية ";
-            
-            // If the count down is finished, write some text 
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            countdown.innerHTML = `${days} يوم, ${hours} ساعة, ${minutes} دقيقة, ${seconds} ثانية`;
+
             if (distance < 0) {
                 clearInterval(x);
-                document.getElementById("countdown").innerHTML = "تم التخرج!";
+                countdown.innerHTML = "تخرجت الدفعة!";
             }
-        }, 1000);
+        };
+
+        const x = setInterval(updateCountdown, 1000);
     </script>
 </body>
 </html>
