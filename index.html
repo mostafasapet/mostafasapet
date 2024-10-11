@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>العد التنازلي لتخرج دفعة هندسة التعدين</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #4E342E, #8D6E63);
+            color: #fff;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            background: -webkit-linear-gradient(#ffeb3b, #f44336);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: colorChange 3s infinite;
+        }
+
+        #countdown {
+            font-size: 2em;
+            margin-top: 10px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            animation: bounce 2s infinite;
+        }
+
+        footer {
+            margin-top: 20px;
+            font-size: 1.2em;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 15px;
+            border-radius: 10px;
+            animation: slideUp 1s ease-out;
+        }
+
+        /* Animation Styles */
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes colorChange {
+            0%, 100% {
+                color: #f44336;
+            }
+            50% {
+                color: #ffeb3b;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Balloon Drawing with CSS */
+        .balloon {
+            position: absolute;
+            bottom: -100px;
+            width: 60px;
+            height: 80px;
+            background: radial-gradient(circle at 30% 30%, #ff3d00, #ff9e00);
+            border-radius: 30px 30px 0 0;
+            animation: float 6s ease-in-out infinite;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .balloon::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 20px;
+            background: #9E9E9E;
+            border-radius: 2px;
+        }
+
+        /* Balloons on the sides */
+        .balloon:nth-child(1) { left: 0; animation-duration: 7s; }
+        .balloon:nth-child(2) { left: 5%; animation-duration: 8s; }
+        .balloon:nth-child(3) { left: 10%; animation-duration: 6.5s; background: radial-gradient(circle at 30% 30%, #00b0ff, #00e5ff); }
+        .balloon:nth-child(4) { right: 5%; animation-duration: 7.5s; background: radial-gradient(circle at 30% 30%, #ff3d00, #ff9e00); }
+        .balloon:nth-child(5) { right: 0; animation-duration: 8.5s; background: radial-gradient(circle at 30% 30%, #ff4081, #ff80ab); }
+        .balloon:nth-child(6) { right: 10%; animation-duration: 9s; background: radial-gradient(circle at 30% 30%, #ffc107, #ffeb3b); }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-30px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* Arabic numbers */
+        #countdown {
+            direction: rtl;
+        }
+
+        /* Engineer Shape using CSS */
+        .engineer {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 100px;
+            height: 150px;
+            background: #FFD54F;
+            border-radius: 15px;
+        }
+
+        .engineer::before {
+            content: '';
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 80px;
+            background: #FFE082;
+            border-radius: 50%;
+            border: 3px solid #FF8F00;
+        }
+
+        /* Mining Pickaxe using CSS */
+        .pickaxe {
+            position: absolute;
+            bottom: 50px;
+            left: 20px;
+            width: 80px;
+            height: 10px;
+            background: #3E2723;
+            transform: rotate(-45deg);
+        }
+
+        .pickaxe::before {
+            content: '';
+            position: absolute;
+            top: -25px;
+            left: -20px;
+            width: 10px;
+            height: 50px;
+            background: #FFAB00;
+            transform: rotate(90deg);
+        }
+    </style>
+</head>
+<body>
+    <h1>2025 باقي من الزمن لتخرج دفعة هندسة المناجم و الفلزات</h1>
+    <div id="countdown"></div>
+    <footer>اعداد ENG Mostafa Thabet</footer>
+
+    <!-- Balloons -->
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+
+    <!-- Engineer and Pickaxe -->
+    <div class="engineer"></div>
+    <div class="pickaxe"></div>
+
+    <script>
+        const targetDate = new Date('2025-06-20T00:00:00').getTime();
+        const countdown = document.getElementById('countdown');
+
+        const arabicNumerals = (num) => num.toString().replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
+
+        const updateCountdown = () => {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            const days = arabicNumerals(Math.floor(distance / (1000 * 60 * 60 * 24)));
+            const hours = arabicNumerals(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+            const minutes = arabicNumerals(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)));
+            const seconds = arabicNumerals(Math.floor((distance % (1000 * 60)) / 1000));
+
+            countdown.innerHTML = `${days} يوم, ${hours} ساعة, ${minutes} دقيقة, ${seconds} ثانية`;
+
+            if (distance < 0) {
+                clearInterval(x);
+                countdown.innerHTML = "تخرجت الدفعة!";
+            }
+        };
+
+        const x = setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
